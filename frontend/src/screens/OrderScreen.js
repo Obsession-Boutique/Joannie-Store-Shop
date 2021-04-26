@@ -48,7 +48,16 @@ const OrderScreen = ({ match, history }) => {
     };
 
     order.itemsPrice = addDecimals(
-      order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+      order.orderItems.reduce(
+        (acc, item) => acc + item.price * item.qty,
+        // +
+        // item.qty1 +
+        // item.qty2 +
+        // item.qty3 +
+        // item.qty4 +
+        // item.qty5,
+        0
+      )
     );
   }
 
@@ -192,7 +201,11 @@ const OrderScreen = ({ match, history }) => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          {/*  Small: {item.qty1} Medium: {item.qty2}{" "}
+                          Large: {item.qty3} X-Large {item.qty4} XX-Large
+                          {item.qty5}
+                           */}
+                          {item.qty}x ${item.price} = ${item.qty * item.price}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -264,7 +277,7 @@ const OrderScreen = ({ match, history }) => {
                   </Button>
                 </ListGroup.Item>
               )}
-{/* 
+              {/* 
               {userInfo && userInfo.isAdmin && (
                 <Button type="button" onClick={statusHandler}>
                   Submit Order Status

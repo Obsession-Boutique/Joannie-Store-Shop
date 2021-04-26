@@ -9,7 +9,7 @@ import Paginate from "../components/Paginate";
 import ProductCarousel from "../components/ProductCarousel";
 import Meta from "../components/Meta";
 import { listProducts } from "../actions/productActions";
-import Hero from '../components/Hero'
+import Hero from "../components/Hero";
 const HomeScreen = ({ match }) => {
   const keyword = match.params.keyword;
 
@@ -27,7 +27,7 @@ const HomeScreen = ({ match }) => {
   return (
     <>
       <Meta />
-      <Hero/>
+      <Hero />
       <br></br>
       <h3>Nuestros Products Mas Comprados!👇🏻</h3>
       {!keyword ? (
@@ -38,13 +38,13 @@ const HomeScreen = ({ match }) => {
         </Link>
       )}
       <h1 className="titprd">Productos</h1>
+
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-        
           <Row>
             {products.map((product) => (
               <Col key={product._id} sm={12} md={6} lg={4} xl={3}>

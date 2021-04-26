@@ -141,3 +141,13 @@ h2 {
 .formm button:active {
   background-color: rgb(90, 87, 87);
 }
+
+.breadcrumb {
+  width: 100%;
+}
+
+.cardsss:hover {
+  transition: 0.25s ease;
+  -webkit-box-shadow: 0px 0px 28px -10px rgba(253, 200, 255, 0.781);
+  box-shadow: 0px 0px 28px -10px rgba(253, 200, 255, 0.781);
+}
