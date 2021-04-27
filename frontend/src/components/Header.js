@@ -5,6 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import SearchBox from "./SearchBox";
 import { logout } from "../actions/userActions";
+import { ReactComponent as ShoppingIcon } from '../data/shoppingbag.svg'
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -32,9 +33,21 @@ const Header = () => {
             <Nav className="ml-auto">
               <LinkContainer to="/cart">
                 <Nav.Link>
+                  {/* 
+                  Word Version
                   <i className="fas fa-shopping-cart"></i> Cart (
-                  {cartItems.reduce((acc, item) => acc + item.qty, 0)})
+                  {cartItems.reduce((acc, item) => acc + item.qty, 0)}) */}
+
+                  <div className="cart-icon">
+                    <ShoppingIcon className="shopping-icon"></ShoppingIcon>
+                    <span className="item-count">
+                      {" "}
+                      {cartItems.reduce((acc, item) => acc + item.qty, 0)}
+                    </span>
+                  </div>
                 </Nav.Link>
+
+                
               </LinkContainer>
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
