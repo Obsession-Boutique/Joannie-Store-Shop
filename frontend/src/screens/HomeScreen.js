@@ -29,7 +29,7 @@ const HomeScreen = ({ match }) => {
       <Meta />
       <Hero />
       <br></br>
-      <h3>Nuestros Products Mas Comprados!👇🏻</h3>
+      <h3>Nuestros Products Mas Vendidos!👇🏻</h3>
       {!keyword ? (
         <ProductCarousel />
       ) : (
