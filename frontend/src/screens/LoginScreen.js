@@ -69,7 +69,7 @@ const LoginScreen = ({ location, history }) => {
         </Col>
 
         <Col>
-          <a href="mailto: creativeduo2020@gmail.com">Forgot Password?</a>
+          <a href="mailto: obsession_boutique_bysacoleira@hotmail.com">Forgot Password?</a>
         </Col>
       </Row>
     </FormContainer>

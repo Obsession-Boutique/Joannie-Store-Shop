@@ -74,7 +74,7 @@ const PlaceOrderScreen = ({ history }) => {
   };
 
   if (cart.couponDiscount) {
-    cart.totalPrice -= Number(cart.couponDiscount);
+    cart.totalPrice -= Number(cart.couponDiscount).toFixed(2);
   }
 
   if(userInfo.ispromember){
