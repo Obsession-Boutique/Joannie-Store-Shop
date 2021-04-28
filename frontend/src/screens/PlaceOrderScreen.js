@@ -33,13 +33,11 @@ const PlaceOrderScreen = ({ history }) => {
     cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   );
 
-
   cart.feePrice = addDecimals(Number(0.03 * cart.itemsPrice + 0.3).toFixed(2));
 
-  cart.totalPrice = (
-    Number(cart.itemsPrice) +
-    Number(cart.feePrice)
-  ).toFixed(2);
+  cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.feePrice)).toFixed(
+    2
+  );
 
   // if (discountCode == "Anna"){
   //   cart.totalPrice = cart.totalPrice - 5
@@ -77,8 +75,8 @@ const PlaceOrderScreen = ({ history }) => {
     cart.totalPrice -= Number(cart.couponDiscount).toFixed(2);
   }
 
-  if(userInfo.ispromember){
-    cart.totalPrice -= 1
+  if (userInfo.ispromember) {
+    cart.totalPrice -= 1;
   }
 
   const addCouponHandler = () => {
@@ -154,7 +152,6 @@ const PlaceOrderScreen = ({ history }) => {
                 </Row>
               </ListGroup.Item>
 
-
               <ListGroup.Item>
                 <Row>
                   <Col>Fee</Col>
@@ -169,35 +166,34 @@ const PlaceOrderScreen = ({ history }) => {
                 </Row>
               </ListGroup.Item>
 
-             
-                <ListGroup.Item>
-                  <Row>
-                    {/* User enters the code from the variable below. Live update on change */}
-                    <label>Enter Your Coupon Code</label>
-                    <br></br>
-                    {userInfo && userInfo.ispromember && (
+              <ListGroup.Item>
+                <Row>
+                  {/* User enters the code from the variable below. Live update on change */}
+                  <label>Enter Your Coupon Code</label>
+                  <br></br>
+                  {userInfo && userInfo.ispromember && (
                     <p style={{ color: "red" }}>
-                      You are getting this message because you are part of the promember family. You get a dollar discount!
+                      You are getting this message because you are part of the
+                      promember family. You get a dollar discount!
                     </p>
-                    )}
+                  )}
 
-                    <input
-                      onChange={(e) => setCoupon(e.target.value)}
-                      className="couponvalue"
-                      placeholder="Enter Coupon Code Here"
-                    />
+                  <input
+                    onChange={(e) => setCoupon(e.target.value)}
+                    className="couponvalue"
+                    placeholder="Enter Coupon Code Here"
+                  />
 
-                    <Button
-                      type="button"
-                      className="btn-block"
-                      style={{ marginTop: "5px" }}
-                      onClick={addCouponHandler}
-                    >
-                      Apply Coupon
-                    </Button>
-                  </Row>
-                </ListGroup.Item>
-              
+                  <Button
+                    type="button"
+                    className="btn-block"
+                    style={{ marginTop: "5px" }}
+                    onClick={addCouponHandler}
+                  >
+                    Apply Coupon
+                  </Button>
+                </Row>
+              </ListGroup.Item>
 
               <ListGroup.Item>
                 {error && <Message variant="danger">{error}</Message>}

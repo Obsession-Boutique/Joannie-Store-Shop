@@ -17,8 +17,10 @@ import Meta from "../components/Meta";
 import {
   listProductDetails,
   createProductReview,
+  // deleteProductReview,
 } from "../actions/productActions";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
+// import { PRODUCT_DELETE_REVIEW_RESET } from "../constants/productConstants";
 
 import { deleteProduct } from "../actions/productActions";
 
@@ -42,17 +44,52 @@ const ProductScreen = ({ history, match }) => {
     error: errorProductReview,
   } = productReviewCreate;
 
+  // const productReviewDelete = useSelector((state) => state.productReviewCreate);
+  // const {
+  //   success: successProductReviewDelete,
+  //   loading: loadingProductReviewDelete,
+  //   error: errorProductReviewDelete,
+  // } = productReviewDelete;
+
   useEffect(() => {
     if (successProductReview) {
       setRating(0);
       setComment("");
     }
 
+    // if (successProductReviewDelete) {
+    //   setRating(0);
+    //   setComment("");
+    // }
+
     if (!product._id || product._id !== match.params.id) {
       dispatch(listProductDetails(match.params.id));
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
     }
-  }, [dispatch, match, successProductReview, product]);
+
+    // if (!product._id || product._id !== match.params.id) {
+    //   dispatch(listProductDetails(match.params.id));
+    //   dispatch({ type: PRODUCT_DELETE_REVIEW_RESET });
+    // }
+  }, [
+    dispatch,
+    match,
+    successProductReview,
+    // successProductReviewDelete,
+    product,
+  ]);
+
+  // useEffect(() => {
+  //   if (successProductReviewDelete) {
+  //     setRating("");
+  //     setComment("");
+  //   }
+
+  //   if (!product._id || product._id !== match.params.id) {
+  //     dispatch(listProductDetails(match.params.id));
+  //     dispatch({ type: PRODUCT_DELETE_REVIEW_RESET });
+  //   }
+  // }, [dispatch, match, successProductReviewDelete, product]);
 
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`);
@@ -66,7 +103,18 @@ const ProductScreen = ({ history, match }) => {
         comment,
       })
     );
+    LoadOnce();
   };
+
+  // const deleteReviewHandler = (e) => {
+  //   e.preventDefault();
+  //   dispatch(
+  //     deleteProductReview(match.params.id, {
+  //       rating,
+  //       comment,
+  //     })
+  //   );
+  // };
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure you want to delete this?")) {
@@ -115,7 +163,7 @@ const ProductScreen = ({ history, match }) => {
                   />
                 </ListGroup.Item>
                 <ListGroup.Item>Brand: {product.brand}</ListGroup.Item>
-                <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+                <ListGroup.Item>Price: $ {product.price}</ListGroup.Item>
                 <ListGroup.Item>Category: {product.category}</ListGroup.Item>
                 <ListGroup.Item>
                   Description: {product.description}
@@ -128,7 +176,7 @@ const ProductScreen = ({ history, match }) => {
                   <ListGroup.Item>
                     <Row>
                       <Col>Price:</Col>
-                      <Col>{product.price}</Col>
+                      <Col>$ {product.price}</Col>
                     </Row>
                   </ListGroup.Item>
 
@@ -212,9 +260,12 @@ const ProductScreen = ({ history, match }) => {
                     <Rating value={review.rating} />
                     <p>{review.createdAt.substring(0, 10)}</p>
                     <p>{review.comment}</p>
-                    <Button className="btn btn-danger btn-block" disabled>
+                    {/* <Button
+                      className="btn btn-danger btn-block"
+                      onClick={deleteReviewHandler}
+                    >
                       Delete Comment (Feature In Development)
-                    </Button>
+                    </Button> */}
                   </ListGroup.Item>
                 ))}
                 <ListGroup.Item>
@@ -226,8 +277,14 @@ const ProductScreen = ({ history, match }) => {
                   )}
 
                   {loadingProductReview && <Loader />}
+                  {/* {loadingProductReviewDelete && <Loader />} */}
                   {errorProductReview && (
-                    <Message variant="danger">{errorProductReview}</Message>
+                    <>
+                      <Message variant="danger">{errorProductReview}</Message>
+                      {/* <Message variant="danger">
+                        {errorProductReviewDelete}
+                      </Message> */}
+                    </>
                   )}
                   {userInfo ? (
                     <Form onSubmit={submitHandler}>
@@ -239,11 +296,11 @@ const ProductScreen = ({ history, match }) => {
                           onChange={(e) => setRating(e.target.value)}
                         >
                           <option value="">Select...</option>
-                          <option value="1">1 - Poor</option>
-                          <option value="2">2 - Fair</option>
-                          <option value="3">3 - Good</option>
-                          <option value="4">4 - Very Good</option>
-                          <option value="5">5 - Excellent</option>
+                          <option value="1">⭐️ - Poor</option>
+                          <option value="2">⭐️⭐️ - Fair</option>
+                          <option value="3">⭐️⭐️⭐️ - Good</option>
+                          <option value="4">⭐️⭐️⭐️⭐️ - Very Good</option>
+                          <option value="5">⭐️⭐️⭐️⭐️⭐️ - Excellent</option>
                         </Form.Control>
                       </Form.Group>
                       <Form.Group controlId="comment">

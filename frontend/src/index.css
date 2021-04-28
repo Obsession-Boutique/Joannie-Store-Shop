@@ -172,6 +172,10 @@ h2 {
   bottom: -2px;
 }
 
+.darkmode-toggle{
+  z-index: 999999999999;
+}
+
 @media (max-width: 1000px) {
   .cart-icon {
     width: 50px;
