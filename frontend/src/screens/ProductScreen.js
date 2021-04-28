@@ -17,10 +17,9 @@ import Meta from "../components/Meta";
 import {
   listProductDetails,
   createProductReview,
-  // deleteProductReview,
+  deleteProductReview,
 } from "../actions/productActions";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
-// import { PRODUCT_DELETE_REVIEW_RESET } from "../constants/productConstants";
 
 import { deleteProduct } from "../actions/productActions";
 
@@ -44,12 +43,12 @@ const ProductScreen = ({ history, match }) => {
     error: errorProductReview,
   } = productReviewCreate;
 
-  // const productReviewDelete = useSelector((state) => state.productReviewCreate);
-  // const {
-  //   success: successProductReviewDelete,
-  //   loading: loadingProductReviewDelete,
-  //   error: errorProductReviewDelete,
-  // } = productReviewDelete;
+  const productReviewDelete = useSelector((state) => state.productReviewCreate);
+  const {
+    success: successProductReviewDelete,
+    loading: loadingProductReviewDelete,
+    error: errorProductReviewDelete,
+  } = productReviewDelete;
 
   useEffect(() => {
     if (successProductReview) {
@@ -57,27 +56,18 @@ const ProductScreen = ({ history, match }) => {
       setComment("");
     }
 
-    // if (successProductReviewDelete) {
-    //   setRating(0);
-    //   setComment("");
-    // }
-
     if (!product._id || product._id !== match.params.id) {
       dispatch(listProductDetails(match.params.id));
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
     }
+  }, [dispatch, match, successProductReview, product]);
 
-    // if (!product._id || product._id !== match.params.id) {
-    //   dispatch(listProductDetails(match.params.id));
-    //   dispatch({ type: PRODUCT_DELETE_REVIEW_RESET });
-    // }
-  }, [
-    dispatch,
-    match,
-    successProductReview,
-    // successProductReviewDelete,
-    product,
-  ]);
+  useEffect(() => {
+    if (successProductReviewDelete) {
+      setRating(0);
+      setComment("");
+    }
+  }, [successProductReviewDelete]);
 
   // useEffect(() => {
   //   if (successProductReviewDelete) {
@@ -106,15 +96,15 @@ const ProductScreen = ({ history, match }) => {
     LoadOnce();
   };
 
-  // const deleteReviewHandler = (e) => {
-  //   e.preventDefault();
-  //   dispatch(
-  //     deleteProductReview(match.params.id, {
-  //       rating,
-  //       comment,
-  //     })
-  //   );
-  // };
+  const deleteReviewHandler = (e) => {
+    e.preventDefault();
+    dispatch(
+      deleteProductReview(match.params.id, {
+        rating,
+        comment,
+      })
+    );
+  };
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure you want to delete this?")) {
@@ -260,12 +250,12 @@ const ProductScreen = ({ history, match }) => {
                     <Rating value={review.rating} />
                     <p>{review.createdAt.substring(0, 10)}</p>
                     <p>{review.comment}</p>
-                    {/* <Button
+                    <Button
                       className="btn btn-danger btn-block"
                       onClick={deleteReviewHandler}
                     >
                       Delete Comment (Feature In Development)
-                    </Button> */}
+                    </Button>
                   </ListGroup.Item>
                 ))}
                 <ListGroup.Item>
@@ -277,13 +267,13 @@ const ProductScreen = ({ history, match }) => {
                   )}
 
                   {loadingProductReview && <Loader />}
-                  {/* {loadingProductReviewDelete && <Loader />} */}
+                  {loadingProductReviewDelete && <Loader />}
                   {errorProductReview && (
                     <>
                       <Message variant="danger">{errorProductReview}</Message>
-                      {/* <Message variant="danger">
+                      <Message variant="danger">
                         {errorProductReviewDelete}
-                      </Message> */}
+                      </Message>
                     </>
                   )}
                   {userInfo ? (

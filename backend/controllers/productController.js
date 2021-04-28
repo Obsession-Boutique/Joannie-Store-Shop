@@ -169,7 +169,7 @@ const deleteProductReview = asyncHandler(async (req, res) => {
       user: req.user._id,
     };
 
-    product.reviews.delete(review);
+    product.reviews.remove[review];
 
     product.rating =
       product.reviews.reduce((acc, item) => item.rating + acc, 0) /
