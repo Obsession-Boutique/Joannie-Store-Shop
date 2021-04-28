@@ -157,25 +157,21 @@ const createProductReview = asyncHandler(async (req, res) => {
 });
 
 const deleteProductReview = asyncHandler(async (req, res) => {
-  const { rating, comment } = req.body;
+  const { rating, comment, reviewId } = req.body;
 
   const product = await Product.findById(req.params.id);
 
   if (product) {
-    const review = {
-      name: req.user.name,
-      rating: Number(rating),
-      comment,
-      user: req.user._id,
-    };
-
-    product.reviews.remove[review];
+    /// removing the specific review
+    product.reviews = product.reviews.filter(
+      (review) => review._id.toString() !== reviewId
+    );
 
     product.rating =
       product.reviews.reduce((acc, item) => item.rating + acc, 0) /
       product.reviews.length;
 
-    await product.remove();
+    await product.save();
     res.status(201).json({ message: "Review deleted" });
   } else {
     res.status(404);
