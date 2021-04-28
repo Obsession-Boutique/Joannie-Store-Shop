@@ -6,7 +6,6 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 import { login } from "../actions/userActions";
-import * as userActions from "../store/actions/userActions";
 
 const LoginScreen = ({ location, history }) => {
   const [email, setEmail] = useState("");
@@ -30,17 +29,6 @@ const LoginScreen = ({ location, history }) => {
     dispatch(login(email, password));
   };
 
-  useEffect(() => {
-    if (!userInfo) {
-      dispatch(userActions.getGoogleUserInfo());
-    }
-    // eslint-disable-next-line
-  }, []);
-
-  const signInWithGoogleHandler = (e) => {
-    e.preventDefault();
-    window.location.href = `/api/auth/google?redirect=${redirect}`;
-  };
 
   return (
     <FormContainer>
@@ -72,13 +60,6 @@ const LoginScreen = ({ location, history }) => {
           Sign In
         </Button>
 
-        <Button
-          type="button"
-          variant="danger"
-          onClick={signInWithGoogleHandler}
-        >
-          <i className="fab fa-google left"> Sign In With Google</i>
-        </Button>
       </Form>
 
       <Row className="py-3">

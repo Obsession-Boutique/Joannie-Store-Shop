@@ -11,7 +11,6 @@ import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 
-import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config();
 
@@ -52,11 +51,6 @@ if (process.env.NODE_ENV === "production") {
 app.use(notFound);
 app.use(errorHandler);
 
-// Google
-// Passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
-app.use("/api/auth", authRoutes);
 
 const PORT = process.env.PORT || 5000;
 
