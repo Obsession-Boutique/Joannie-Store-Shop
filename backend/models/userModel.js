@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema(
     },
     password: {
       type: String,
-      required: true,
+      // required: true,
     },
     isAdmin: {
       type: Boolean,
@@ -32,7 +32,10 @@ const userSchema = mongoose.Schema(
     isgoldmember: {
       type: Boolean,
       default: false,
-    }
+    },
+    googleId: {
+      type: String,
+    },
   },
   {
     timestamps: true,

@@ -1,4 +1,5 @@
 import express from "express";
+import authRoutes from "./routes/authRoutes.js";
 const router = express.Router();
 import {
   getProducts,
@@ -23,5 +24,7 @@ router
   .get(getProductById)
   .delete(protect, admin, deleteProduct)
   .put(protect, admin, updateProduct);
+
+router.route("/api/auth", authRoutes);
 
 export default router;

@@ -255,7 +255,7 @@ const ProductScreen = ({ history, match }) => {
                       className="btn btn-danger btn-block"
                       onClick={deleteReviewHandler(review._id)}
                     >
-                      Delete Comment (Feature In Development)
+                      Delete Comment
                     </Button>
                   </ListGroup.Item>
                 ))}
