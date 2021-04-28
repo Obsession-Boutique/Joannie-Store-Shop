@@ -96,12 +96,13 @@ const ProductScreen = ({ history, match }) => {
     LoadOnce();
   };
 
-  const deleteReviewHandler = (e) => {
+  const deleteReviewHandler = (reviewId) => (e) => {
     e.preventDefault();
     dispatch(
       deleteProductReview(match.params.id, {
         rating,
         comment,
+        reviewId,
       })
     );
   };
@@ -252,7 +253,7 @@ const ProductScreen = ({ history, match }) => {
                     <p>{review.comment}</p>
                     <Button
                       className="btn btn-danger btn-block"
-                      onClick={deleteReviewHandler}
+                      onClick={deleteReviewHandler(review._id)}
                     >
                       Delete Comment (Feature In Development)
                     </Button>
