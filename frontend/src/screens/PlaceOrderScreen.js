@@ -73,7 +73,8 @@ const PlaceOrderScreen = ({ history }) => {
 
   if (cart.couponDiscount) {
     cart.totalPrice *= Number(cart.couponDiscount).toFixed(2);
-  }
+    cart.totalPrice = cart.totalPrice.toFixed(2);
+    }
 
   if (userInfo.ispromember) {
     cart.totalPrice -= 1;
