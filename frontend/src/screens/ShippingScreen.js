@@ -82,6 +82,7 @@ const ShippingScreen = ({ history }) => {
             required
             onChange={(e) => setCountry(e.target.value)}
           >
+            <option value="No-Country-Selected">Select</option>
             <option value="USA EEUU">USA (EEUU)</option>
             <option value="Puerto Rico">Puerto Rico</option>
           </Form.Control>

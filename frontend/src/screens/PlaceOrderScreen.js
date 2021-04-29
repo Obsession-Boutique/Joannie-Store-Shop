@@ -30,7 +30,10 @@ const PlaceOrderScreen = ({ history }) => {
   };
 
   cart.itemsPrice = addDecimals(
-    cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+    cart.cartItems.reduce(
+      (acc, item) => acc + item.price + item.specialPrice * item.qty,
+      0
+    )
   );
 
   cart.feePrice = addDecimals(Number(0.03 * cart.itemsPrice + 0.3).toFixed(2));
@@ -38,12 +41,6 @@ const PlaceOrderScreen = ({ history }) => {
   cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.feePrice)).toFixed(
     2
   );
-
-  // if (discountCode == "Anna"){
-  //   cart.totalPrice = cart.totalPrice - 5
-  // } else {
-  //   cart.totalPrice = cart.totalPrice
-  // }
 
   const orderCreate = useSelector((state) => state.orderCreate);
   const { order, success, error } = orderCreate;
@@ -72,8 +69,8 @@ const PlaceOrderScreen = ({ history }) => {
   };
 
   if (cart.couponDiscount) {
-    var tempDisc = Number(cart.couponDiscount) * cart.totalPrice
-    cart.totalPrice -= tempDisc
+    var tempDisc = Number(cart.couponDiscount) * cart.totalPrice;
+    cart.totalPrice -= tempDisc;
     cart.totalPrice = cart.totalPrice.toFixed(2);
   }
 
@@ -100,8 +97,8 @@ const PlaceOrderScreen = ({ history }) => {
                 <br />
                 {cart.shippingAddress.city} {cart.shippingAddress.state} {""}
                 {""}
-                {cart.shippingAddress.postalCode}<br/>{" "}
-                Country: {cart.shippingAddress.country}
+                {cart.shippingAddress.postalCode}
+                <br /> Country: {cart.shippingAddress.country}
               </p>
             </ListGroup.Item>
 
@@ -134,7 +131,9 @@ const PlaceOrderScreen = ({ history }) => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          {item.qty} x {item.price > 0 && <>${item.price}</>}
+                          {item.specialPrice > 0 && <>{item.specialPrice}</>} = $ {""}
+                          {item.qty * (item.price + item.specialPrice)}
                         </Col>
                       </Row>
                     </ListGroup.Item>

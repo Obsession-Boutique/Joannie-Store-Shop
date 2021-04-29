@@ -7,7 +7,7 @@ const Product = ({ product }) => {
   return (
     <Card className="my-3 p-1 rounded cardsss">
       <Link to={`/product/${product._id}`}>
-        <Card.Img src={product.image} variant="top" className="imggg"/>
+        <Card.Img src={product.image} variant="top" className="imggg" />
       </Link>
 
       <Card.Body>
@@ -24,7 +24,19 @@ const Product = ({ product }) => {
           />
         </Card.Text>
 
-        <Card.Text as="h3">${product.price}</Card.Text>
+        {product.price > 0 && (
+          <>
+            <Card.Text as="h3">${product.price}</Card.Text>
+          </>
+        )}
+        {product.specialPrice > 0 && (
+          <>
+            <Card.Text as="h3">
+              {" "}
+              Discounted Price: ${product.specialPrice}
+            </Card.Text>
+          </>
+        )}
       </Card.Body>
     </Card>
   );

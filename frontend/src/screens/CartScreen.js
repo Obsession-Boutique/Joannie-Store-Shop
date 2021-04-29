@@ -17,7 +17,6 @@ const CartScreen = ({ match, location, history }) => {
   const productId = match.params.id;
 
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
-  
 
   const dispatch = useDispatch();
 
@@ -57,7 +56,16 @@ const CartScreen = ({ match, location, history }) => {
                   <Col md={3}>
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
-                  <Col md={2}>${item.price}</Col>
+                  {item.price > 0 && (
+                    <>
+                      <Col md={2}>${item.price}</Col>
+                    </>
+                  )}
+                  {item.specialPrice > 0 && (
+                    <>
+                      <Col md={3}>Discounted Price: {item.specialPrice}</Col>
+                    </>
+                  )}
                   <Col md={2}>
                     <Form.Control
                       as="select"
@@ -143,8 +151,8 @@ const CartScreen = ({ match, location, history }) => {
                       ))}
                     </Form.Control> */}
 
-                      {/* XXLarge Option */}
-                      {/* <Form.Control
+                    {/* XXLarge Option */}
+                    {/* <Form.Control
                       as="select"
                       value={item.qty}
                       onChange={(e) =>
@@ -185,7 +193,11 @@ const CartScreen = ({ match, location, history }) => {
               </h2>
               $
               {cartItems
-                .reduce((acc, item) => acc + item.qty * item.price, 0)
+                .reduce(
+                  (acc, item) =>
+                    acc + item.qty * (item.price + item.specialPrice),
+                  0
+                )
                 .toFixed(2)}
             </ListGroup.Item>
             <ListGroup.Item>

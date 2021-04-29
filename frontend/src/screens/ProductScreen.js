@@ -156,6 +156,14 @@ const ProductScreen = ({ history, match }) => {
                 </ListGroup.Item>
                 <ListGroup.Item>Brand: {product.brand}</ListGroup.Item>
                 <ListGroup.Item>Price: $ {product.price}</ListGroup.Item>
+
+                {product.specialPrice > 0 && (
+                  <>
+                    <ListGroup.Item>
+                      Discounted Price: $ {product.specialPrice}
+                    </ListGroup.Item>
+                  </>
+                )}
                 <ListGroup.Item>Category: {product.category}</ListGroup.Item>
                 <ListGroup.Item>
                   Description: {product.description}
@@ -167,15 +175,26 @@ const ProductScreen = ({ history, match }) => {
                 <ListGroup variant="flush">
                   <ListGroup.Item>
                     <p>Add to wishlist:</p>
-                    
                   </ListGroup.Item>
-                  <ListGroup.Item>
-                    <Row>
-                      <Col>Price:</Col>
-                      <Col>$ {product.price}</Col>
-                    </Row>
-                  </ListGroup.Item>
+                  {product.price > 0 && (
+                    <>
+                      <ListGroup.Item>
+                        <Row>
+                          <Col>Price:</Col>
+                          <Col>${product.price}</Col>
+                        </Row>
+                      </ListGroup.Item>
+                    </>
+                  )}
 
+                  {product.specialPrice > 0 && (
+                    <>
+                      <ListGroup.Item>
+                        <Col>Discounted Price:</Col>{" "}
+                        <Col>$ {product.specialPrice}</Col>
+                      </ListGroup.Item>
+                    </>
+                  )}
                   <ListGroup.Item>
                     <Row>
                       <Col>Status:</Col>

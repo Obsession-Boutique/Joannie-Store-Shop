@@ -14,6 +14,7 @@ const ProductEditScreen = ({ match, history }) => {
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
+  const [specialPrice, setSpecialPrice] = useState(0);
   const [image, setImage] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
@@ -46,6 +47,7 @@ const ProductEditScreen = ({ match, history }) => {
       } else {
         setName(product.name);
         setPrice(product.price);
+        setSpecialPrice(product.specialPrice);
         setImage(product.image);
         setBrand(product.brand);
         setCategory(product.category);
@@ -89,6 +91,7 @@ const ProductEditScreen = ({ match, history }) => {
           _id: productId,
           name,
           price,
+          specialPrice,
           image,
           brand,
           category,
@@ -132,6 +135,17 @@ const ProductEditScreen = ({ match, history }) => {
                 placeholder="Enter price"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId="specialPrice">
+              <Form.Label>Special Price?</Form.Label>
+              <Form.Control
+                type="number"
+                step="any"
+                placeholder="Enter Special Price"
+                value={specialPrice}
+                onChange={(e) => setSpecialPrice(e.target.value)}
               ></Form.Control>
             </Form.Group>
 

@@ -18,6 +18,7 @@ const orderSchema = mongoose.Schema(
         // qty5: { type: Number, required: true },
         image: { type: String, required: true },
         price: { type: Number, required: true },
+        specialPrice: {type: Number},
         countInStock: { type: Number, required: true },
         countSmall: { type: Number, default: 0 },
         countMedium: { type: Number, default: 0 },

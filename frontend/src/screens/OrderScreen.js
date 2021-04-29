@@ -49,7 +49,7 @@ const OrderScreen = ({ match, history }) => {
 
     order.itemsPrice = addDecimals(
       order.orderItems.reduce(
-        (acc, item) => acc + item.price * item.qty,
+        (acc, item) => acc + item.price + item.specialPrice * item.qty,
         // +
         // item.qty1 +
         // item.qty2 +
@@ -206,7 +206,10 @@ const OrderScreen = ({ match, history }) => {
                           Large: {item.qty3} X-Large {item.qty4} XX-Large
                           {item.qty5}
                            */}
-                          {item.qty}x ${item.price} = ${item.qty * item.price}
+                          {item.qty} x{order.price > 0 && <>${item.price}</>}{" "}
+                          {""}
+                          {item.specialPrice > 0 && <>{item.specialPrice}</>}
+                          {""} = ${item.qty * (item.price + item.specialPrice)}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -230,6 +233,11 @@ const OrderScreen = ({ match, history }) => {
                 <Row>
                   <Col>Items</Col>
                   <Col>${order.itemsPrice}</Col>
+                  {order.specialPrice > 0 && (
+                    <>
+                      <Col>${order.specialPrice}</Col>
+                    </>
+                  )}
                 </Row>
               </ListGroup.Item>
 

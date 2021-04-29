@@ -63,6 +63,7 @@ const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
     name: "Product",
     price: 0.0,
+    specialPrice: 0.0,
     user: req.user._id,
     image: "https://i.ibb.co/5cwCHky/FY3017-2.jpg",
     brand: "Sacoleira",
@@ -93,6 +94,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     brand,
     category,
     countInStock,
+    specialPrice,
     // countSmall,
     // countMedium,
     // countLarge,
@@ -105,6 +107,7 @@ const updateProduct = asyncHandler(async (req, res) => {
   if (product) {
     product.name = name;
     product.price = price;
+    product.specialPrice = specialPrice
     product.description = description;
     product.image = image;
     product.brand = brand;

@@ -57,6 +57,10 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
+    specialPrice: {
+      type: Number,
+      default: 0
+    },
     lastPrice: {
       type: Number,
       default: 0,
