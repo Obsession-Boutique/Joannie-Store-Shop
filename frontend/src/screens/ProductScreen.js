@@ -105,6 +105,7 @@ const ProductScreen = ({ history, match }) => {
         reviewId,
       })
     );
+    LoadOnce();
   };
 
   const deleteHandler = (id) => {

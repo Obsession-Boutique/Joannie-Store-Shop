@@ -244,12 +244,12 @@ export const deleteProductReview = (productId, review) => async (
 
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${userInfo.token}`,
       },
-    }
-
-    await axios.delete(`/api/products/${productId}/reviews`, config, review)
+      data: review,
+    };
+    await axios.delete(`/api/products/${productId}/reviews`, config);
 
     dispatch({
       type: PRODUCT_DELETE_REVIEW_SUCCESS,

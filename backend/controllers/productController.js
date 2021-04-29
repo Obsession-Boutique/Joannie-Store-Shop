@@ -157,8 +157,7 @@ const createProductReview = asyncHandler(async (req, res) => {
 });
 
 const deleteProductReview = asyncHandler(async (req, res) => {
-  const { rating, comment, reviewId } = req.body;
-
+  const { reviewId } = req.body;
   const product = await Product.findById(req.params.id);
 
   if (product) {
@@ -166,10 +165,11 @@ const deleteProductReview = asyncHandler(async (req, res) => {
     product.reviews = product.reviews.filter(
       (review) => review._id.toString() !== reviewId
     );
-
     product.rating =
-      product.reviews.reduce((acc, item) => item.rating + acc, 0) /
-      product.reviews.length;
+      product.reviews.length > 0
+        ? product.reviews.reduce((acc, item) => item.rating + acc, 0) /
+          product.reviews.length
+        : 0;
 
     await product.save();
     res.status(201).json({ message: "Review deleted" });
@@ -184,7 +184,6 @@ const deleteProductReview = asyncHandler(async (req, res) => {
 // @access  Public
 const getTopProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({}).sort({ rating: -1 }).limit(10);
-
   res.json(products);
 });
 
