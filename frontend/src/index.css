@@ -269,3 +269,18 @@ h2 {
     box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
   }
 }
+
+
+.wishlist-icon-heart-card {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+  font-size: 20px;
+  color: rgb(190, 190, 190);
+}
+
+.wishlist-icon-heart-card:hover {
+  color: red;
+  cursor: pointer;
+}

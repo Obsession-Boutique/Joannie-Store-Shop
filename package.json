@@ -16,6 +16,7 @@
   "author": "Brad Traversy",
   "license": "MIT",
   "dependencies": {
+    "@ant-design/icons": "^4.6.2",
     "@brainhubeu/react-carousel": "^2.0.3",
     "@glidejs/glide": "^3.4.1",
     "antd": "^4.15.3",

@@ -20,7 +20,7 @@ import {
   deleteProductReview,
 } from "../actions/productActions";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
-
+// import { HeartOutlined } from "@ant-design/icons/HeartOutlined";
 import { deleteProduct } from "../actions/productActions";
 
 const ProductScreen = ({ history, match }) => {
@@ -165,6 +165,10 @@ const ProductScreen = ({ history, match }) => {
             <Col md={3}>
               <Card>
                 <ListGroup variant="flush">
+                  <ListGroup.Item>
+                    <p>Add to wishlist:</p>
+                    
+                  </ListGroup.Item>
                   <ListGroup.Item>
                     <Row>
                       <Col>Price:</Col>
