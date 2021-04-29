@@ -72,9 +72,10 @@ const PlaceOrderScreen = ({ history }) => {
   };
 
   if (cart.couponDiscount) {
-    cart.totalPrice *= Number(cart.couponDiscount).toFixed(2);
+    var tempDisc = Number(cart.couponDiscount) * cart.totalPrice
+    cart.totalPrice -= tempDisc
     cart.totalPrice = cart.totalPrice.toFixed(2);
-    }
+  }
 
   if (userInfo.ispromember) {
     cart.totalPrice -= 1;
@@ -94,9 +95,13 @@ const PlaceOrderScreen = ({ history }) => {
               <h2>Shipping</h2>
               <p>
                 <strong>Address:</strong>
-                {cart.shippingAddress.address}, {cart.shippingAddress.city}{" "}
-                {cart.shippingAddress.postalCode},{" "}
-                {cart.shippingAddress.country}
+                <br />
+                {cart.shippingAddress.address}
+                <br />
+                {cart.shippingAddress.city} {cart.shippingAddress.state} {""}
+                {""}
+                {cart.shippingAddress.postalCode}<br/>{" "}
+                Country: {cart.shippingAddress.country}
               </p>
             </ListGroup.Item>
 

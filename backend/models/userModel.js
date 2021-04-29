@@ -33,6 +33,10 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    isWishlist: {
+      type: Boolean,
+      default: false,
+    },
     googleId: {
       type: String,
     },
