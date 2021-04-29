@@ -77,7 +77,7 @@ export const addCoupon = (coupon) => (dispatch) => {
   // TODO: Get couponDiscount value from db
 
   if (coupon.toLowerCase() === "familydiscount") {
-    couponDiscount = 3;
+    couponDiscount = .3;
   }
 
   if (coupon.toLowerCase() === "militarydiscount") {

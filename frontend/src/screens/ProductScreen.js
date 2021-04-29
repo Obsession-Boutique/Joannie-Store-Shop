@@ -252,12 +252,14 @@ const ProductScreen = ({ history, match }) => {
                     <Rating value={review.rating} />
                     <p>{review.createdAt.substring(0, 10)}</p>
                     <p>{review.comment}</p>
-                    <Button
-                      className="btn btn-danger btn-block"
-                      onClick={deleteReviewHandler(review._id)}
-                    >
-                      Delete Comment
-                    </Button>
+                    {userInfo.isAdmin && (
+                      <Button
+                        className="btn btn-danger btn-block"
+                        onClick={deleteReviewHandler(review._id)}
+                      >
+                        Delete Comment
+                      </Button>
+                    )}
                   </ListGroup.Item>
                 ))}
                 <ListGroup.Item>
