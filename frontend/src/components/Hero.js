@@ -24,7 +24,6 @@ const Hero = () => {
           resolve: slidesToShowPlugin,
           options: {
             numberOfSlides: 1,
-
           },
         },
       ]}
@@ -65,14 +64,13 @@ const Hero = () => {
         },
       }}
     >
-      <img src="https://i.ibb.co/yp1XGng/blusas.jpg" width="100%" alt="" />
-      <img src="https://i.ibb.co/QYxHrcy/mahones.jpg" width="100%" alt="" />
-      <img src="https://i.ibb.co/L5RM6F2/trajebano.jpg" width="100%" alt="" />
-      <img src="https://i.ibb.co/jHBrNWD/tennis.jpg" width="100%" alt="" />
-      <img src="https://i.ibb.co/ctRZVS5/plataforma.jpg" width="100%" alt="" />
-      <img src="https://i.ibb.co/mJQZm2B/sandalias.jpg" width="100%" alt="" />
-      <img src="https://i.ibb.co/TkP1Fwj/accessories.jpg" width="100%" alt="" />
-
+      <img src="https://i.ibb.co/VWt4z6S/acessories.jpg" width="100%" alt="" />
+      <img src="https://i.ibb.co/1ZyR9rH/bano.jpg" width="100%" alt="" />
+      <img src="https://i.ibb.co/RTS3V3c/blusas.jpg" width="100%" alt="" />
+      <img src="https://i.ibb.co/YWbBhjh/mahones.jpg" width="100%" alt="" />
+      <img src="https://i.ibb.co/bFqWjF3/plataforma.jpg" width="100%" alt="" />
+      <img src="https://i.ibb.co/ZBR2MVK/sandalias.jpg" width="100%" alt="" />
+      <img src="https://i.ibb.co/q7Nvwzc/tennis.jpg" width="100%" alt="" />
     </Carousel>
   );
 };
