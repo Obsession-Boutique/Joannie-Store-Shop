@@ -69,11 +69,11 @@ const createProduct = asyncHandler(async (req, res) => {
     brand: "Sacoleira",
     category: "",
     countInStock: 10,
-    // countSmall: 0,
-    // countMedium: 0,
-    // countLarge: 0,
-    // countXLarge: 0,
-    // countXXLarge: 0,
+    countSmall: 0,
+    countMedium: 0,
+    countLarge: 0,
+    countXLarge: 0,
+    countXXLarge: 0,
     numReviews: 0,
     description: "",
   });
@@ -95,11 +95,11 @@ const updateProduct = asyncHandler(async (req, res) => {
     category,
     countInStock,
     specialPrice,
-    // countSmall,
-    // countMedium,
-    // countLarge,
-    // countXLarge,
-    // countXXLarge,
+    countSmall,
+    countMedium,
+    countLarge,
+    countXLarge,
+    countXXLarge,
   } = req.body;
 
   const product = await Product.findById(req.params.id);
@@ -113,11 +113,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.brand = brand;
     product.category = category;
     product.countInStock = countInStock;
-    // product.countSmall = countSmall;
-    // product.countMedium = countMedium;
-    // product.countLarge = countLarge;
-    // product.countXLarge = countXLarge;
-    // product.countXXLarge = countXXLarge;
+
 
     const updatedProduct = await product.save();
     res.json(updatedProduct);

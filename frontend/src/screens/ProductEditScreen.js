@@ -14,6 +14,11 @@ const ProductEditScreen = ({ match, history }) => {
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
+  const [small, setSmall] = useState(0)
+  const [medium, setMedium] = useState(0)
+  const [large, setLarge] = useState(0)
+  const [xxlarge, setXXLarge] = useState(0)
+  const [xlarge, setxlarge] = useState(0)
   const [specialPrice, setSpecialPrice] = useState(0);
   const [image, setImage] = useState("");
   const [brand, setBrand] = useState("");
@@ -48,6 +53,11 @@ const ProductEditScreen = ({ match, history }) => {
         setName(product.name);
         setPrice(product.price);
         setSpecialPrice(product.specialPrice);
+        setSmall(product.countSmall)
+        setMedium(product.countMedium)
+        setLarge(product.countLarge)
+        setXXlarge(product.countXXlarge)
+        setXlarge(product.countXlarge)
         setImage(product.image);
         setBrand(product.brand);
         setCategory(product.category);
@@ -92,6 +102,11 @@ const ProductEditScreen = ({ match, history }) => {
           name,
           price,
           specialPrice,
+          countSmall,
+          countMedium,
+          countLarge,
+          countXlarge,
+          countXXlarge,
           image,
           brand,
           category,
@@ -194,6 +209,56 @@ const ProductEditScreen = ({ match, history }) => {
               )}
             </Form.Group>
 
+            <Form.Group controlId="countSmall">
+              <Form.Label>Small in stock?</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Enter stock of Small"
+                value={countSmall}
+                onChange={(e) => setSmall(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId="countMedium">
+              <Form.Label>Medium in stock?</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Enter stock of Medium"
+                value={countMedium}
+                onChange={(e) => setMedium(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId="countLarge">
+              <Form.Label>Large in stock?</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Enter stock of Large"
+                value={countLarge}
+                onChange={(e) => setLarge(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId="countXlarge">
+              <Form.Label>Xlarge in stock?</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Enter stock of X large"
+                value={countXlarge}
+                onChange={(e) => setXlarge(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId="countXXlarge">
+              <Form.Label>XX large in stock?</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Enter stock of XX large"
+                value={countXXlarge}
+                onChange={(e) => setXXlarge(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
             <Form.Group controlId="category">
               <Form.Label>Category</Form.Label>
               <Form.Control
@@ -210,16 +275,7 @@ const ProductEditScreen = ({ match, history }) => {
                 <option value="Sandalias">Sandalias</option>
                 <option value="Accessories">Accessories</option>
               </Form.Control>
-              {/* <Form.Control
-                as="select"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              >
-                <option value="Clothes">Clothes</option>
-                <option value="Cups/Tumblers/Mugs">Cups/Tumblers/Mugs</option>
-                <option value="Stickers">Stickers</option>
-                <option value="Other">Other</option>
-              </Form.Control> */}
+
             </Form.Group>
 
             <Form.Group controlId="description">

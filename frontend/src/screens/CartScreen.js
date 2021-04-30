@@ -84,7 +84,7 @@ const CartScreen = ({ match, location, history }) => {
                     </Form.Control>
 
                     {/* Small Option */}
-                    {/* <Form.Control
+                    <Form.Control
                       as="select"
                       value={item.qty}
                       onChange={(e) =>
@@ -98,10 +98,10 @@ const CartScreen = ({ match, location, history }) => {
                           {x + 1}
                         </option>
                       ))}
-                    </Form.Control> */}
+                    </Form.Control>
 
                     {/* Medium Option */}
-                    {/* <Form.Control
+                    <Form.Control
                       as="select"
                       value={item.qty}
                       onChange={(e) =>
@@ -115,10 +115,10 @@ const CartScreen = ({ match, location, history }) => {
                           {x + 1}
                         </option>
                       ))}
-                    </Form.Control> */}
+                    </Form.Control>
 
                     {/* Large Option */}
-                    {/* <Form.Control
+                     <Form.Control
                       as="select"
                       value={item.qty}
                       onChange={(e) =>
@@ -132,10 +132,10 @@ const CartScreen = ({ match, location, history }) => {
                           {x + 1}
                         </option>
                       ))}
-                    </Form.Control> */}
+                    </Form.Control>
 
                     {/* Xlarge Option */}
-                    {/* <Form.Control
+                    <Form.Control
                       as="select"
                       value={item.qty}
                       onChange={(e) =>
@@ -149,10 +149,10 @@ const CartScreen = ({ match, location, history }) => {
                           {x + 1}
                         </option>
                       ))}
-                    </Form.Control> */}
+                    </Form.Control>
 
                     {/* XXLarge Option */}
-                    {/* <Form.Control
+                    <Form.Control
                       as="select"
                       value={item.qty}
                       onChange={(e) =>
@@ -166,7 +166,7 @@ const CartScreen = ({ match, location, history }) => {
                           {x + 1}
                         </option>
                       ))}
-                    </Form.Control> */}
+                    </Form.Control>
                   </Col>
                   <Col md={2}>
                     <Button

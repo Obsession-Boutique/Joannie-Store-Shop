@@ -25,6 +25,11 @@ import { deleteProduct } from "../actions/productActions";
 
 const ProductScreen = ({ history, match }) => {
   const [qty, setQty] = useState(1);
+  const [qty1, setQty1] = useState(0);
+  const [qty2, setQty2] = useState(0);
+  const [qty3, setQty3] = useState(0);
+  const [qty4, setQty4] = useState(0);
+  const [qty5, setQty5] = useState(0);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
@@ -68,18 +73,6 @@ const ProductScreen = ({ history, match }) => {
       setComment("");
     }
   }, [successProductReviewDelete]);
-
-  // useEffect(() => {
-  //   if (successProductReviewDelete) {
-  //     setRating("");
-  //     setComment("");
-  //   }
-
-  //   if (!product._id || product._id !== match.params.id) {
-  //     dispatch(listProductDetails(match.params.id));
-  //     dispatch({ type: PRODUCT_DELETE_REVIEW_RESET });
-  //   }
-  // }, [dispatch, match, successProductReviewDelete, product]);
 
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`);
@@ -226,6 +219,123 @@ const ProductScreen = ({ history, match }) => {
                       </Row>
                     </ListGroup.Item>
                   )}
+
+                  {product.countInStock > 0 && (
+                    <ListGroup.Item>
+                      <Row>
+                        <Col>Small</Col>
+                        <Col>
+                          <Form.Control
+                            as="select"
+                            value={qty1}
+                            onChange={(e) => setQty1(e.target.value)}
+                          >
+                            {[...Array(product.countInStock).keys()].map(
+                              (x) => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                              )
+                            )}
+                          </Form.Control>
+                        </Col>
+                      </Row>
+                    </ListGroup.Item>
+                  )}
+
+{product.countInStock > 0 && (
+                    <ListGroup.Item>
+                      <Row>
+                        <Col>Medium</Col>
+                        <Col>
+                          <Form.Control
+                            as="select"
+                            value={qty2}
+                            onChange={(e) => setQty2(e.target.value)}
+                          >
+                            {[...Array(product.countInStock).keys()].map(
+                              (x) => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                              )
+                            )}
+                          </Form.Control>
+                        </Col>
+                      </Row>
+                    </ListGroup.Item>
+                  )}
+
+{product.countInStock > 0 && (
+                    <ListGroup.Item>
+                      <Row>
+                        <Col>Large</Col>
+                        <Col>
+                          <Form.Control
+                            as="select"
+                            value={qty3}
+                            onChange={(e) => setQty3(e.target.value)}
+                          >
+                            {[...Array(product.countInStock).keys()].map(
+                              (x) => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                              )
+                            )}
+                          </Form.Control>
+                        </Col>
+                      </Row>
+                    </ListGroup.Item>
+                  )}
+
+{product.countInStock > 0 && (
+                    <ListGroup.Item>
+                      <Row>
+                        <Col>XLarge</Col>
+                        <Col>
+                          <Form.Control
+                            as="select"
+                            value={qty4}
+                            onChange={(e) => setQty4(e.target.value)}
+                          >
+                            {[...Array(product.countInStock).keys()].map(
+                              (x) => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                              )
+                            )}
+                          </Form.Control>
+                        </Col>
+                      </Row>
+                    </ListGroup.Item>
+                  )}
+
+{product.countInStock > 0 && (
+                    <ListGroup.Item>
+                      <Row>
+                        <Col>XXLarge</Col>
+                        <Col>
+                          <Form.Control
+                            as="select"
+                            value={qty5}
+                            onChange={(e) => setQty5(e.target.value)}
+                          >
+                            {[...Array(product.countInStock).keys()].map(
+                              (x) => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                              )
+                            )}
+                          </Form.Control>
+                        </Col>
+                      </Row>
+                    </ListGroup.Item>
+                  )}
+
+                  
 
                   <ListGroup.Item>
                     <Button
