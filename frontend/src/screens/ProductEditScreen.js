@@ -140,6 +140,7 @@ const ProductEditScreen = ({ match, history }) => {
 
             <Form.Group controlId="specialPrice">
               <Form.Label>Special Price?</Form.Label>
+              <p style={{color: "red"}}>* If you want to have discounted price, leave the field above at $0 and add the discounted price here.</p>
               <Form.Control
                 type="number"
                 step="any"
@@ -209,6 +210,7 @@ const ProductEditScreen = ({ match, history }) => {
                 <option value="Tennis">Tennis</option>
                 <option value="Sandalias">Sandalias</option>
                 <option value="Accessories">Accessories</option>
+                <option value="Other">Other</option>
               </Form.Control>
               {/* <Form.Control
                 as="select"

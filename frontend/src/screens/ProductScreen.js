@@ -173,9 +173,9 @@ const ProductScreen = ({ history, match }) => {
             <Col md={3}>
               <Card>
                 <ListGroup variant="flush">
-                  <ListGroup.Item>
+                  {/* <ListGroup.Item>
                     <p>Add to wishlist:</p>
-                  </ListGroup.Item>
+                  </ListGroup.Item> */}
                   {product.price > 0 && (
                     <>
                       <ListGroup.Item>
