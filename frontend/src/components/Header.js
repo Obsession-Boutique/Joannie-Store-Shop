@@ -22,6 +22,9 @@ const Header = () => {
 
   return (
     <header>
+      <div>
+        <h6 className="headertitle">Shipping Available To The United States Of America & Puerto Rico (PR)</h6>
+      </div>
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">

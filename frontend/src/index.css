@@ -284,3 +284,13 @@ h2 {
   color: red;
   cursor: pointer;
 }
+
+
+.headertitle{
+  text-align: center;
+  padding: 15px;
+  background-color: #000;
+  color: white;
+  margin: 0 0;
+  font-size: .8em;
+}
