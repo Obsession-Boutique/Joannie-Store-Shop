@@ -29,7 +29,7 @@ const HomeScreen = ({ match }) => {
       <Meta />
       <Hero />
       <br></br>
-      <h3>Nuestros Products Mas Vendidos!👇🏻</h3>
+      <h3>Our Best Selling Products👇🏻</h3>
       {!keyword ? (
         <ProductCarousel />
       ) : (
@@ -37,7 +37,7 @@ const HomeScreen = ({ match }) => {
           Go Back
         </Link>
       )}
-      <h1 className="titprd">Productos</h1>
+      <h1 className="titprd">Products</h1>
 
       {loading ? (
         <Loader />
