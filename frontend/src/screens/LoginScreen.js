@@ -71,16 +71,18 @@ const LoginScreen = ({ location, history }) => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant='primary' style={{ marginRight: '5px' }}>
+        <Button type='submit' variant='primary' className='button btn-block' style={{ marginRight: '5px' }}>
           Sign In
         </Button>
 
+        <hr/>
+
         <Button
           type='button'
-          variant='danger'
+          className='button btn-block signningoogle'
           onClick={signInWithGoogleHandler}
         >
-          <i className='fab fa-google left'> Sign In With Google</i>
+          <img src="https://img.icons8.com/fluent/48/000000/google-logo.png" height="auto" alt="" e style={{marginRight: "5px"}}/> Sign In With Google
         </Button>
       </Form>
 

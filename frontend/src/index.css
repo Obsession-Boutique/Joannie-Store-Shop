@@ -294,3 +294,23 @@ h2 {
   margin: 0 0;
   font-size: .8em;
 }
+
+.signningoogle{
+  background-color: transparent;
+  border: 1px solid #000;
+  color: #000;
+}
+
+.signningoogle:hover{
+  background-color: #000;
+  color: white;
+}
+
+.signningoogle:active{
+  background-color: #333;
+}
+
+.signningoogle i {
+  color: red;
+  margin-right: 5px;
+}
