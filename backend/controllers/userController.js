@@ -11,9 +11,15 @@ const authUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
 
   if (user && (await user.matchPassword(password))) {
-    user.token = generateToken(user._id);
-    delete user.password;
-    res.json(user);
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      isAdmin: user.isAdmin,
+      ispromember: user.ispromember,
+      token: generateToken(user._id),
+    });
   } else {
     res.status(401);
     throw new Error('Invalid email or password');
@@ -41,9 +47,15 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 
   if (user) {
-    user.token = generateToken(user._id);
-    delete user.password;
-    res.status(201).json(user);
+    res.status(201).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      ispromember: user.ispromember,
+      phone: user.phone,
+      token: generateToken(user._id),
+    });
   } else {
     res.status(400);
     throw new Error('Invalid user data');
@@ -54,10 +66,22 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route   GET /api/users/profile
 // @access  Private
 const getUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id).select('-password');
+  const user = await User.findById(req.user._id);
 
   if (user) {
-    res.json(user);
+    const response = {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      isAdmin: user.isAdmin,
+      ispromember: user.ispromember,
+    };
+
+    if (user.googleId) {
+      response.googleId = user.googleId;
+    }
+    res.json(response);
   } else {
     res.status(404);
     throw new Error('User not found');
@@ -80,10 +104,21 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
     const updatedUser = await user.save();
 
-    updatedUser.token = generateToken(updatedUser._id);
-    delete updatedUser.password;
+    const response = {
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+      ispromember: updateUser.ispromember,
+      phone: updatedUser.phone,
+      token: generateToken(updatedUser._id),
+    };
 
-    res.json(updatedUser);
+    if (updatedUser.googleId) {
+      response.googleId = updatedUser.googleId;
+    }
+
+    res.json(response);
   } else {
     res.status(404);
     throw new Error('User not found');
@@ -147,9 +182,20 @@ const updateUser = asyncHandler(async (req, res) => {
 
     const updatedUser = await user.save();
 
-    delete updatedUser.password;
+    const response = {
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      phone: updatedUser.phone,
+      isAdmin: updatedUser.isAdmin,
+      ispromember: updatedUser.ispromember,
+    };
 
-    res.json(updatedUser);
+    if (updatedUser.googleId) {
+      response.googleId = updatedUser.googleId;
+    }
+
+    res.json(response);
   } else {
     res.status(404);
     throw new Error('User not found');

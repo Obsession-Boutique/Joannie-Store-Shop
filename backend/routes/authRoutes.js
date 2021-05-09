@@ -36,12 +36,22 @@ router.get(
 router.get('/currentuser', (req, res) => {
   const user = req.user;
   if (user) {
-    user.token = generateToken(user._id);
-    delete user.password;
-    res.json(user);
+    res.json({
+      _id: user._id,
+      googleId: user.googleId,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      token: generateToken(user._id),
+    });
   } else {
     res.send(null);
   }
+});
+
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect(originUri);
 });
 
 export default router;
