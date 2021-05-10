@@ -12,6 +12,9 @@ const Footer = () => {
           <Col>
             <div id="google_translate_element"></div>
           </Col>
+          <Col>
+              <a href="/privacypolicy">Privacy Policy</a>
+          </Col>
         </Row>
       </Container>
     </footer>
